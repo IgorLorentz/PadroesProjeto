@@ -8,6 +8,14 @@ projeto.
 ## Singleton
 
 ## Bridge
+O padrão Bridge é um padrão de projeto estrutural que possibilita a separação de uma classe grande ou de um conjunto de classes fortemente relacionadas em duas hierarquias distintas: abstração e implementação, permitindo o desenvolvimento independente de ambas.
+
+### Explicação do código:
+A ideia geral do código é demonstrar o padrão de projeto Bridge em um cenário onde veículos interagem com motores e podem ser renderizados em diferentes contextos.
+A Interface IMotor define a representação do comportamento do motor, com os métodos de iniciar e parar. No modelo de brigde ele é a interface de implementação.
+As classes MotosGasolina e MotorEletrico são implemetações concretas da interface IMotor. Ou seja, elas contém códigos plataforma-específicos e definem como os métodos iniciar e parar devem ser executados conforme cada tipo de motor.
+
+
 
 ## Mediator
 Mediador é um padrão de projeto comportamental que permite a comunicação indireta entre componentes do programa por meio de objetos mediadores especiais, reduzindo assim o acoplamento entre os componentes do programa.
