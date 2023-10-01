@@ -30,7 +30,7 @@ Na Classe Bridge, a qual contém a Main, é possível ver um exemplo da criaçã
 
 ### O código no contexto bridge:
 A interface IMotor é usada para definir os contratos que as implementações concretas devem seguir. Ela permite que vários tipos de motores possam ser criados sem alterar os códigos da classe de veículo.
-A abstração Veiculo serve como base para iplementação de Motor e define métodos que dependem do comportamento do motor, mas deixa a implementação específica para as suas subclasses (Carro e Barco). Isso faz com que as classes de Veiculo sejam isoladas das classes de motor. 
+A abstração Veiculo serve como base para implementação de Motor e define métodos que dependem do comportamento do motor, mas deixa a implementação específica para as suas subclasses (Carro e Barco). Isso faz com que as classes de Veiculo sejam isoladas das classes de motor. 
 
 ## Mediator
 Mediador é um padrão de projeto comportamental que permite a comunicação indireta entre componentes do programa por meio de objetos mediadores especiais, reduzindo assim o acoplamento entre os componentes do programa.
