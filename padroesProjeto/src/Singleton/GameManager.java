@@ -3,16 +3,30 @@ package Singleton;
 public class GameManager
 {
     private static GameManager instance;
+    private String[] status = {"NextLevel", "Finish"};
+    private int level;
+    private int score;
 
-    private int vida;
-    private int dano;
-    private int pontos;
+
+    private String playerName;
+    private double playerLife;
+    private double playerDMG;
+
+    private String[] enemyNames = {"Slime", "Morcego", "Esqueleto",
+            "Mage", "Boss01"};
+    private double enemyLife;
+    private double enemyDMG;
 
     private GameManager()
     {
-        this.vida = 5;
-        this.dano = 1;
-        this.pontos = 0;
+        this.level = 0;
+        this.score = 0;
+
+        this.playerLife = 5;
+        this.playerDMG = 1;
+
+        this.enemyLife = 1;
+        this.enemyDMG = 1;
     }
 
     public static GameManager getInstance()
@@ -25,18 +39,59 @@ public class GameManager
         return instance;
     }
 
-    public int getVida()
+    public void nextLevel()
     {
-        return vida;
+        this.level++;
+
+        this.playerLife *= 1.5;
+        this.playerDMG *= 1.5;
+
+        this.enemyLife *= 3;
+        this.enemyDMG *= 2;
     }
 
-    public int getDano()
+    public int getLevel()
     {
-        return dano;
+        return level;
     }
 
-    public int getPontos()
+    public int getScore()
     {
-        return pontos;
+        return score;
+    }
+
+    public String getPlayerName()
+    {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName)
+    {
+        this.playerName = playerName;
+    }
+
+    public double getPlayerLife()
+    {
+        return playerLife;
+    }
+
+    public double getPlayerDMG()
+    {
+        return playerDMG;
+    }
+
+    public String getEnemyName(int i)
+    {
+        return enemyNames[i];
+    }
+
+    public double getEnemyLife()
+    {
+        return enemyLife;
+    }
+
+    public double getEnemyDMG()
+    {
+        return enemyDMG;
     }
 }
