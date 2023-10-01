@@ -18,23 +18,23 @@ Singleton é é um padrão de projeto criacional que garante a uma classe uma ú
 ### Explicação do código:
 
 ## Bridge
-O padrão Bridge é um padrão de projeto estrutural que possibilita a separação de uma classe grande ou de um conjunto de classes fortemente relacionadas em duas hierarquias distintas: abstração e implementação, permitindo o desenvolvimento independente de ambas.
+O Bridge é um padrão de projeto estrutural que possibilita a separação de uma classe grande ou de um conjunto de classes fortemente relacionadas em duas hierarquias distintas: abstração e implementação, permitindo o desenvolvimento independente de ambas.
 
 ### Explicação do código:
 A ideia geral do código é demonstrar o padrão de projeto Bridge em um cenário onde veículos interagem com motores e podem ser renderizados em  contextos diferentes.
 
 A Interface IMotor define a representação do comportamento do motor, com os métodos de iniciar e parar. No modelo de brigde ele é a interface de implementação.
-As classes MotorGasolina e MotorEletrico são implemetações concretas da interface IMotor. Ou seja, elas contém códigos plataforma-específicos e definem como os métodos iniciar e parar devem ser executados conforme cada tipo de motor.
+Nesse sentido, as classes MotorGasolina e MotorEletrico são implemetações concretas da interface IMotor, ou seja, elas contém códigos plataforma-específicos e definem como os métodos iniciar e parar devem ser executados conforme cada tipo de motor.
 
 A classe de abstração Veiculo serve como base e contém uma referência a interface de implementação IMotor. Essa classe implementa os métodos abstratos de acelerar e frear que dependem da implementação do motor.
-As classes Carro e Barco são implementações da classe Veiculo. Elas herdam Veiculo e implementam os métodos de acelerar e frear de acordo com as suas necessidades, usando a implementação do motor associado para executar as funções de iniciar e parar.
+As classes Carro e Barco são implementações da classe Veiculo e ultilizam os métodos de acelerar e frear de acordo com as suas necessidades, usando a implementação do motor associado para executar as funções de iniciar e parar.
 
 Na Classe Bridge, a qual contém a Main, é possível ver um exemplo da criação da instância dos motores e a utilização deles para criação das instâncias de diferentes tipos de veículos e a diferença na execução dos métodos.
 
 ### O código no contexto bridge:
-A interface IMotor é usada para definir os contratos que as implementações concretas devem seguir. Ela permite que vários tipos de motores possam ser criados sem alterar os códigos da classe de veículo.
+A interface IMotor é usada para definir os contratos que as implementações concretas (MotorEletrico e MotorGasolina) devem seguir. Ela permite que vários tipos de motores possam ser criados sem alterar os códigos da classe Veiculo.
 
-A abstração Veiculo serve como base para iplementação de Motor e define métodos que dependem do comportamento do motor, mas deixa a implementação específica para as suas subclasses (Carro e Barco). Isso faz com que as classes de Veiculo sejam isoladas das classes de motor. 
+A abstração veículo serve como base para implementação de Motor e define métodos que dependem do comportamento do motor, mas deixa a implementação específica para as suas subclasses (Carro e Barco). Isso faz com que as classes de Veiculo sejam isoladas das classes de motor. 
 
 
 ## Mediator
