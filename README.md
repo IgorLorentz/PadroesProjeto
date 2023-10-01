@@ -6,6 +6,16 @@ grupo deve criar um repositório no GitHub para o projeto e fornecer o link do
 projeto.
 
 ## Singleton
+Singleton é é um padrão de projeto criacional que garante a uma classe uma única instância, enquanto provê um ponto de acesso global para essa instância. De modo geral desabilita todas as formas de criação de uma classe a não ser pelo método escolhido.
+
+*Um Singleton deve possuir características como:*
+- Uma única instância durante a vida útil da aplicação;
+- Não deve ser possível instanciá-lo através do seu construtor, que precisa ter visibilidade preferencialmente privada;
+- Almém de possuir uma instância que esteja disponível de forma global, no seu projeto.
+
+
+
+### Explicação do código:
 
 ## Bridge
 
