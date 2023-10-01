@@ -3,10 +3,32 @@ package Singleton;
 public class GameManager
 {
     private static GameManager instance;
-    private String[] status = {"NextLevel", "Finish"};
+    public enum States
+    {
+        RUNNING(0),
+        NEXTLEVEL(1),
+        FINISH(2);
+
+        private int state;
+
+        States(int i)
+        {
+            this.state = i;
+        }
+
+        public int getState()
+        {
+            return state;
+        }
+
+        public void setState(int state)
+        {
+            this.state = state;
+        }
+    }
+    public States state = States.RUNNING;
     private int level;
     private int score;
-
 
     private String playerName;
     private double playerLife;
@@ -43,16 +65,21 @@ public class GameManager
     {
         this.level++;
 
-        this.playerLife *= 1.5;
-        this.playerDMG *= 1.5;
+        this.playerLife *= 3;
+        this.playerDMG *= 2;
 
-        this.enemyLife *= 3;
+        this.enemyLife *= 5;
         this.enemyDMG *= 2;
     }
 
     public int getLevel()
     {
         return level;
+    }
+
+    public int getEnemiesAmount()
+    {
+        return enemyNames.length;
     }
 
     public int getScore()

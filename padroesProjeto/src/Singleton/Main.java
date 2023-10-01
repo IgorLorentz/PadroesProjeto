@@ -25,27 +25,40 @@ public class Main
         gameManager.setPlayerName(playerName);
 
         var level = gameManager.getLevel();
+        var enemiesAmount = gameManager.getEnemiesAmount();
 
-        var playerLife = gameManager.getPlayerLife();
-        var playerDMG = gameManager.getPlayerDMG();
-
-        var enemyName = gameManager.getEnemyName(level);
-        var enemyLife = gameManager.getEnemyLife();
-        var enemyDMG = gameManager.getEnemyDMG();
-
-        var status = Battle(playerName, playerLife, playerDMG, enemyName, enemyLife, enemyDMG);
-
-        if(status == 0)
+        if(level < enemiesAmount)
         {
-            gameManager.nextLevel();
-            Game(playerName);
+            var playerLife = gameManager.getPlayerLife();
+            var playerDMG = gameManager.getPlayerDMG();
+
+            var enemyName = gameManager.getEnemyName(level);
+            var enemyLife = gameManager.getEnemyLife();
+            var enemyDMG = gameManager.getEnemyDMG();
+
+            System.out.println("VIDA: " + playerLife + "\nFORÇA: " + playerDMG);
+
+            var state = Battle(playerName, playerLife, playerDMG, enemyName, enemyLife, enemyDMG);
+
+            gameManager.state.setState(state);
+
+            if(state == 1)
+            {
+                gameManager.nextLevel();
+                System.out.println("LEVEL UP!");
+                Game(playerName);
+            }
+        }
+        else
+        {
+            System.out.println("TODOS OS MONSTROS FORAM DERROTADOS, PARABÉNS!");
         }
     }
 
     static int Battle(String playerName, double playerLife, double playerDMG, String enemyName, double enemyLife, double enemyDMG)
     {
         Random rand = new Random();
-        int op = 0;
+        int op;
         double critChance = rand.nextDouble();
 
         do
@@ -53,40 +66,44 @@ public class Main
             op = BattlePanel(playerName, enemyName, enemyLife, enemyDMG);
 
             if(op != 0)
-                return 1;
+                return 2;
 
             if(critChance <= 0.4)
             {
                 enemyLife -= playerDMG * 2;
 
-                System.out.println("CRÍTICO!");
+                System.out.println("CRÍTICO! Dano causado: " + (playerDMG * 2) + "\nVida atual do monstro: " + enemyLife);
             }
             else
             {
                 enemyLife -= playerDMG;
-            }
 
-            System.out.println("Inimigo: " + enemyLife);
+                System.out.println("Dano causado: " + playerDMG + "\nVida atual do monstro: " + enemyLife);
+            }
 
             if(enemyLife > 0)
             {
                 playerLife -= enemyDMG;
+
+                System.out.println("Dano sofrido: " + enemyDMG + "\nVida atual do player: " + playerLife);
             }
 
-            System.out.println("Player: " + playerLife);
-
             if(playerLife <= 0)
-                return 1;
+            {
+                System.out.println("PLAYER DERROTADO!");
+                return 2;
+            }
         }
         while(playerLife > 0 && enemyLife > 0);
 
-        return 0;
+        System.out.println("MONSTRO DERROTADO!");
+        return 1;
     }
 
     static int BattlePanel(String playerName, String enemyName, double enemyLife, double enemyDMG)
     {
         String[] options = {"Atacar!", "Sair!"};
-        String message = enemyName + "\nVIDA: " + enemyLife + "\nDANO: " + enemyDMG;
+        String message = enemyName + "\nVIDA: " + enemyLife + "\nFORÇA: " + enemyDMG;
         String title = "Let's Battle, " + playerName + "!";
         String path = "images/" + enemyName + ".png";
 
