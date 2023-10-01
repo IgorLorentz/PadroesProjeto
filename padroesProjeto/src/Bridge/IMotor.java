@@ -1,6 +1,6 @@
 package Bridge;
 
-//Classe de implementação
+//Interface de implementação
 interface IMotor {
     void iniciar();
     void parar();

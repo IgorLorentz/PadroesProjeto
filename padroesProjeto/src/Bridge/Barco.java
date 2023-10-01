@@ -1,6 +1,6 @@
 package Bridge;
 
-//Implementação da classe de Barco 
+////Implementação de Barco usando a classe de Abstração 
 class Barco extends Veiculo {
     public Barco(IMotor motor) {
         super(motor);
